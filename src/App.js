@@ -1,9 +1,9 @@
-
+import Header from "./components/Header/Header";
 
 function App() {
   return (
     <div className="App">
-      <h1>React Task Tracker Lesson</h1>
+      <Header title='Task Tracker'/>
     </div>
   );
 }
