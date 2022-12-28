@@ -27,7 +27,7 @@ function App() {
   ]);
 
   const toggleReminder = (id) => {
-    setTasks(tasks.map((task) => task.id === id ? { ...task, reminder: !task.reminder} : task))
+    setTasks(tasks.map((task) => task.id === id ? { ...task, reminder: !task.reminder } : task))
     console.log('toggle', id)
   }
 
@@ -37,17 +37,19 @@ function App() {
 
   const addTask = (task) => {
     const id = Math.floor(Math.random() * 10000) + 1;
-    const newTask = { id, ...task};
+    const newTask = { id, ...task };
     setTasks([...tasks, newTask])
   }
 
   return (
     <div className="App">
-      <Header title='Task Tracker' onAdd={() => setShowAddTask(!showAddTask)}/>
-     {showAddTask && <AddTask onAdd={addTask} />}
-      { tasks.length > 0 ? <Tasks tasks={tasks} 
-                                  onDelete={deleteTask} 
-                                  onToggle={toggleReminder}/> : 'No Tasks To Show'}
+      <Header title='Task Tracker' 
+              onAdd={() => setShowAddTask(!showAddTask)}
+              showAdd={showAddTask} />
+      {showAddTask && <AddTask onAdd={addTask} />}
+      {tasks.length > 0 ? <Tasks tasks={tasks}
+                                onDelete={deleteTask}
+                                onToggle={toggleReminder} /> : 'No Tasks To Show'}
     </div>
   );
 }
